@@ -1,17 +1,28 @@
 package br.com.fatecomerce.api.entity;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Entity
+@NoArgsConstructor
 @AllArgsConstructor
 @Data
-@NoArgsConstructor
 public class Categoria {
-    private Integer idCategoria;
-    private String nomeCategoria;
-    private String descricaoCategoria;
 
-    public void test() {
-        Categoria c = new Categoria(idCategoria = 1, nomeCategoria = "Tiago", descricaoCategoria="Viado");
-    }
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_category")
+    private Long idCategory;
+
+    @Column(name = "name_category", nullable = false, length = 300, unique = true)
+    private String nameCategory;
+
+    @Column(name = "description_category", length = 1000)
+    private String descriptionCategory;
+
 }
