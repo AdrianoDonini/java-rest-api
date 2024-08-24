@@ -1,4 +1,4 @@
-package br.com.fatecomerce.api;
+package br.com.fatecomerce.api.repository;
 
 import java.util.Locale.Category;
 
