@@ -2,11 +2,9 @@ package br.com.fatecomerce.api.controller;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale.Category;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -18,41 +16,39 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.fatecomerce.api.entity.Categoria;
-import br.com.fatecomerce.api.service.CategoryService;
+import br.com.fatecomerce.api.entity.Product;
+import br.com.fatecomerce.api.service.ProductService;
 
 @RestController
-@RequestMapping(value = "/api/v1/category")
+@RequestMapping(value = "/api/v1/product")
 @CrossOrigin(value = "*")
-public class CategoryController {
-        @Autowired
-    private CategoryService categoryService;
+public class ProductController {
+            @Autowired
+    private ProductService ProductService;
 
     @GetMapping(value = "/list")
     public ResponseEntity<Object> getInfoCategories() {
-        List<Categoria> result = categoryService.getInfoCategories();
+        List<Product> result = ProductService.getInfoCategories();
         return ResponseEntity.status(HttpStatus.OK).body(result);
     }
     @PostMapping(value = "/create")
-    public ResponseEntity<Object> saveCategory(@RequestBody Categoria category) {
-        Categoria result = categoryService.saveCategory(category);
+    public ResponseEntity<Object> saveProduct(@RequestBody Product Product) {
+        Product result = ProductService.saveProduct(Product);
         return ResponseEntity.status(HttpStatus.CREATED).body(result);
     }
-    @DeleteMapping(value = "/delete/{idCategory}")
-    public ResponseEntity<Object> deleteCategory(@PathVariable Long idCategory) {
-        HashMap<String, Object> result = categoryService.deleteCategory(idCategory);
+    @DeleteMapping(value = "/delete/{idProduct}")
+    public ResponseEntity<Object> deleteProduct(@PathVariable Long idProduct) {
+        HashMap<String, Object> result = ProductService.deleteProduct(idProduct);
         return ResponseEntity.status(HttpStatus.OK).body(result);
     }
-    @GetMapping(value = "/findCategory/{idCategory}")
-    public ResponseEntity<Object> getCategoryById(@PathVariable Long idCategory){
-        Categoria result = categoryService.findCategoryById(idCategory);
+    @GetMapping(value = "/findProduct/{idProduct}")
+    public ResponseEntity<Object> getProductById(@PathVariable Long idProduct){
+        Product result = ProductService.findProductById(idProduct);
         return ResponseEntity.status(HttpStatus.OK).body(result);
     }
     @PutMapping(value = "/update")
-    public ResponseEntity<Object> updateCategoria(@RequestBody Categoria categoria){
-        Categoria result = categoryService.updateCategoria(categoria);
+    public ResponseEntity<Object> updateProduct(@RequestBody Product Product){
+        Product result = ProductService.updateProduct(Product);
         return ResponseEntity.status(HttpStatus.OK).body(result);
     }
-
 }
-

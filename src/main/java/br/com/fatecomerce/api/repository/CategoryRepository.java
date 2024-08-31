@@ -1,9 +1,10 @@
 package br.com.fatecomerce.api.repository;
 
-import java.util.Locale.Category;
+
+import br.com.fatecomerce.api.entity.Categoria;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface CategoryRepository extends JpaRepository<Category, Long> {
+public interface CategoryRepository extends JpaRepository<Categoria, Long> {
 
 }
