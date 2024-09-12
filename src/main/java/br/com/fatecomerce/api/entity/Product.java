@@ -3,6 +3,7 @@ package br.com.fatecomerce.api.entity;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 
@@ -36,21 +37,21 @@ public class Product {
     private String eanProduct;
 
     @Column(name = "cost_price_product", nullable = false, precision = 10, scale = 2)
-    @NotBlank(message =  "O campo preço do produto não pode ser vazio!")
+    @NotNull
     private BigDecimal costPriceProduct;
 
     @Column(name = "amout_product", nullable = false, precision = 10, scale = 2)
-    @NotBlank(message = "O compo quantidade do produto não pode ser vazio!")
+    @NotNull
     private BigDecimal amountProduct;
 
     @Column(name = "published_product", nullable = false , length = 1)
     private Boolean publishedProduct;
 
     @Column(name = "stock_product", length = 100)
-    @NotBlank(message = "O campo stock do prosuto não pode ser vazio!")
+    @NotNull
     private BigDecimal stockProduct;
 
-    @Column(name = "date_created_product", nullable = false)
+    @Column(name = "date_created_product")
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dateCreatedProduct;
 

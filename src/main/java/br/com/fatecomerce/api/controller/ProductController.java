@@ -1,5 +1,6 @@
 package br.com.fatecomerce.api.controller;
 
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 
@@ -42,13 +43,34 @@ public class ProductController {
         return ResponseEntity.status(HttpStatus.OK).body(result);
     }
     @GetMapping(value = "/findProduct/{idProduct}")
-    public ResponseEntity<Object> getProductById(@PathVariable Long idProduct){
+    public ResponseEntity<Object> findProductByEan(@PathVariable Long idProduct){
         Product result = ProductService.findProductById(idProduct);
         return ResponseEntity.status(HttpStatus.OK).body(result);
     }
     @PutMapping(value = "/update")
     public ResponseEntity<Object> updateProduct(@RequestBody Product Product){
         Product result = ProductService.updateProduct(Product);
+        return ResponseEntity.status(HttpStatus.OK).body(result);
+    }
+    @GetMapping(value = "/findProductByEan/{eanProduct}")
+    public ResponseEntity<Object> findProductByEan(@PathVariable String eanProduct){
+        Product result = ProductService.findProductByEan(eanProduct);
+        return ResponseEntity.status(HttpStatus.OK).body(result);
+    }
+    @GetMapping(value = "/findProductBySku/{skuProduct}")
+    public ResponseEntity<Object> findProductBySku(@PathVariable String skuProduct){
+        Product result = ProductService.findProductBySku(skuProduct);
+        return ResponseEntity.status(HttpStatus.OK).body(result);
+    }
+    @GetMapping(value = "/findProductByName/{nameProduct}")
+    public ResponseEntity<Object> findProductByName(@PathVariable String nameProduct){
+        Product result = ProductService.findProductByName(nameProduct);
+        return ResponseEntity.status(HttpStatus.OK).body(result);
+    }
+
+    @GetMapping(value = "/findProductByDateCreated/{dateCreatedProduct}")
+    public ResponseEntity<Object> findProductByDateCreated(@PathVariable LocalDate dateCreatedProduct) {
+        List<Product> result = ProductService.findProductByDateCreated(dateCreatedProduct);
         return ResponseEntity.status(HttpStatus.OK).body(result);
     }
 }

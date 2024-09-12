@@ -13,7 +13,7 @@ public class SwaggerConfig {
     @Bean
     public GroupedOpenApi publicApi() {
         return GroupedOpenApi.builder().group("fatecommerce-rest-api")
-                .packagesToScan("br.com.fatecommerce.api.controller")
+                .packagesToScan("br.com.fatecomerce.api.controller")
                 .build();
     }
 
